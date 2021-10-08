@@ -23,6 +23,8 @@ for g in genus:
     url = 'http://www.boldsystems.org/index.php/API_Public/combined?taxon={}&format=json'.format(g)
     
     local_path = 'raw_data/{}.json'.format(g)
+
+    print(g)
     
     if os.path.isfile(local_path):
         print('file {} already exists'.format(local_path))

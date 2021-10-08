@@ -19,10 +19,12 @@ with open(taxonomy_file, 'r') as f:
             if d['rank'] == 'genus':
                 genus.add(d['name'])
 
-mimicry_files = [s for s in os.listdir('mimicry') if s.endswith('.json')]
+mimicry_files = sorted([s for s in os.listdir('mimicry') if s.endswith('.json')])
 
 for mf in mimicry_files:
     path = os.path.join('mimicry', mf)
+    
+    print(path)
 
     with open(path, 'r') as f:
         data = json.loads(f.read())

@@ -1,6 +1,7 @@
 import json
 import os
 from collections import Counter
+import re
 
 
 genus = [f[:-5] for f in os.listdir('raw_data') if f.endswith('.json')]
@@ -25,6 +26,7 @@ for g in genus:
                 
                 if len(coi5p_sequences) == 1:
                     coi5p = coi5p_sequences[0]['nucleotides'].upper()
+                    coi5p = re.sub(r'[^ACTG]', '.', coi5p)
 
                     if 'collection_event' in data['bold_records']['records'][t].keys():
                         country = data['bold_records']['records'][t]['collection_event']['country']
